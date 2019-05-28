@@ -528,7 +528,7 @@
 	%% 正文页眉页脚
 	\fancypagestyle{main}{
 	  \fancyhf{}
-	  \fancyhead[L]{\includegraphics{figure/sjtubanner}}
+	  \fancyhead[L]{\includegraphics{figure/sjtubanner-2.pdf}}
 	  \fancyhead[R]{\parbox[b]{\markboxwidth}{\raggedleft\nouppercase{\sjtu@fancyhead\sjtu@value@titlemark}}}
 	  \fancyfoot[C]{\sjtu@fancyfoot{\pageref{last}}}
 	  \renewcommand{\headheight}{32pt}
@@ -536,7 +536,7 @@
   %% 英文大摘要
   \fancypagestyle{biglast}{
     \fancyhf{}
-    \fancyhead[L]{\includegraphics{figure/sjtubanner}}
+    \fancyhead[L]{\includegraphics{figure/sjtubanner-2.pdf}}
     \fancyhead[R]{\parbox[b]{\markboxwidth}{\raggedleft\nouppercase{\sjtu@fancyhead\sjtu@value@titlemark}}}
     \fancyfoot[C]{\sjtu@fancyfoot{\pageref{biglast}}}
     \renewcommand{\headheight}{32pt}
@@ -544,7 +544,7 @@
 	%% 开章页页眉页脚
 	\fancypagestyle{plain}{% 设置开章页页眉页脚风格(只有页码作为页脚)
 	  \fancyhf{}
-	  \fancyhead[L]{\includegraphics{figure/sjtubanner}}
+	  \fancyhead[L]{\includegraphics{figure/sjtubanner-2.pdf}}
 	  \fancyhead[R]{\parbox[b]{\markboxwidth}{\raggedleft\nouppercase{\sjtu@fancyhead\sjtu@value@titlemark}}}
 	  \fancyfoot[C]{\sjtu@fancyfoot{\pageref{last}}}
 	  \renewcommand{\headheight}{32pt}
@@ -708,7 +708,7 @@
 \setcounter{page}{1}
 \fancypagestyle{biglast}{
   \fancyhf{}
-  \fancyhead[L]{\includegraphics{figure/sjtubanner}}
+  \fancyhead[L]{\includegraphics{figure/sjtubanner-2.pdf}}
   \fancyhead[R]{\parbox[b]{\markboxwidth}{\raggedleft\nouppercase{\sjtu@fancyhead\sjtu@value@titlemark}}}
   \fancyfoot[C]{\sjtu@fancyfoot{\pageref{biglast}}}
   \renewcommand{\headheight}{32pt}
@@ -716,7 +716,7 @@
 
 \fancypagestyle{plain}{% 设置开章页页眉页脚风格(只有页码作为页脚)
   \fancyhf{}
-  \fancyhead[L]{\includegraphics{figure/sjtubanner}}
+  \fancyhead[L]{\includegraphics{figure/sjtubanner-2.pdf}}
   \fancyhead[R]{\parbox[b]{\markboxwidth}{\raggedleft\nouppercase{\sjtu@fancyhead\sjtu@value@titlemark}}}
   \fancyfoot[C]{\sjtu@fancyfoot{\pageref{biglast}}}
   \renewcommand{\headheight}{32pt}

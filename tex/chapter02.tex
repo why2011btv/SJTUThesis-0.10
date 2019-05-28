@@ -76,12 +76,26 @@ Y^{\text{DoubleQ}}_t \!\equiv r_{t} + \gamma Q(s_{t+1}, \argmax_a Q(s_{t+1}, a; 
 基于值函数的增强学习算法得到的是给定某状态下每种动作的$Q$值，agent选择$Q$值最大的动作（贪婪策略下）。与基于值函数的算法不同，基于策略的增强学习不输出某状态下的动作的值，而是直接输出具体的某个动作，即直接对策略进行建模。基于策略的增强学习算法按输出分为两类：Stochastic方法输出动作空间$\mathcal{A}$上的概率分布，Deterministic方法直接输出动作$a$本身。
 
 \subsection{Stochastic策略梯度方法}
+\label{sec:stochas_PG}
 在此种方法中，agent的动作由随机（stochastic）策略$\pi (s)$决定。随机策略的意思是它不输出一个单独的动作，而是输出各种动作的概率分布，所有动作的概率之和为1。我们采用$\pi (a|s)$表示状态$s$下选择动作$a$的概率。简单而言，策略$\pi$并不最大化任何值，只是对于某个状态s给出所有可能动作的概率。策略$\pi$的价值函数定义为折扣回报的期望：
 \begin{equation}
 V(s) = E_{\pi (s)}[r + \gamma V(s’)]
 \end{equation}
 这里我们对状态s下的所有可能动作的$r + \gamma V(s’)$取平均（而没有取最大值）。另外我们定义一个优势函数$A(s, a)$：$A(s,a) = Q(s,a) - V(s) $。显然，这个函数的意义是：在状态s下采取动作a带来的回报比动作空间的回报均值多出了多少。最后我们用$\rho$来表示状态的分布，即在某种状态的概率，那么$\rho^{s_0}$就是环境初始状态的概率分布，$\rho^\pi$则是在采取某策略$\pi$下的状态分布。
-
+%\begin{comment}
+%\begin{algorithm}[h]
+%  \caption{Reinforce Algorithm \cite{reinforce}} 
+%  \label{algo:reinforce}
+%  \begin{algorithmic}
+%    \State Initialize $\theta$ arbitrarily.
+%    \For{$episode = {s_1, a_1, r_1, ..., s_T, a_t} \sim \pi_\theta$}
+%      \For{t = 1 to T-1}
+%        \state $\theta \leftarrow \theta + \alpha \Delta_\theta log \pi_\theta(s_t, a_t)v_t$
+%      \EndFor
+%    \EndFor
+%  \end{algorithmic}
+%\end{algorithm}
+%\end{comment}
 与Deep Q-Network的想法类似，我们同样可以用神经网络（参数为$\theta$）估计策略（即一个以状态$s$为输入、动作概率分布$\pi_\theta$为输出的函数）。agent可以根据输出的动作概率选择下一步的动作。为了优化策略，我们需要定义衡量策略好坏的函数$J(\pi)$：
 \begin{equation}
 J(\pi) = E_{\rho^{s_0}}[V(s_0)]
@@ -123,6 +137,7 @@ Silver等人证明了决定性的策略梯度定理，打破了使决定性策�
     \label{fig:actor-critic}
 \end{figure}
 \subsection{DPG算法}
+\label{sec:DPG}
 David Silver等人提出的DPG (Deterministic Policy Gradient)\cite{silver2014deter}算法都属于决定性的actor-critic算法。DPG能够很好地解决连续动作空间上的问题，主要分为on-policy和off-policy两种。On-policy算法中的critic负责估计动作的价值函数（这里使用一个可微的动作价值函数$Q^\omega(s,a)$替换真实的动作价值函数$Q^\mu(s,a)$，并使用Sarsa算法对其参数进行更新），actor负责通过策略梯度算法调整决定性策略$\mu_\theta(s)$。Off-policy算法与On-policy算法的不同之处在于critic的参数更新算法使用了Q-learning。Silver等人通过计算得到了衡量策略表现的函数$J$的梯度\cite{silver2014deter}（如式\ref{dpg_act}所示），由此DPG算法的actor就可以对折扣回报的期望应用链式法则以更新actor参数。
 \begin{equation}
 \begin{split}

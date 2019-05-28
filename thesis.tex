@@ -4,7 +4,7 @@
 %%==================================================
 
 % 双面打印
-\documentclass[bachelor, openright, twoside]{sjtuthesis}
+\documentclass[bachelor, openany, twoside]{sjtuthesis}
 \usepackage{hyperref}
 \usepackage{url}
 \usepackage{amsfonts}
@@ -17,10 +17,13 @@
 \usepackage{array}% http://ctan.org/pkg/array
 \usepackage{longtable}
 \usepackage{import}
+\usepackage{color, colortbl}
 %\usepackage{subcaption}
 %\usepackage{algorithmic}
 \DeclareMathOperator*{\argmax}{arg\,max}
-
+\newcommand{\sunxuezhang}[1]{\textcolor{red}{[#1]}}
+%\DeclareMathOperator{\argmax}{argmax}
+%\def\mclimits_#1{\limits_{\mathclap{#1}}}
 
 % \documentclass[bachelor, openany, oneside, submit]{sjtuthesis}
 % \documentclass[master, review]{sjtuthesis}
@@ -71,12 +74,12 @@
 \tableofcontents
 \listoffigures
 \addcontentsline{toc}{chapter}{\listfigurename} %将插图目录加入全文目录
-\listoftables
-\addcontentsline{toc}{chapter}{\listtablename}  %将表格目录加入全文目录
-\listofalgorithms
-\addcontentsline{toc}{chapter}{\listalgorithmname} %将算法目录加入全文目录
+%\listoftables
+%\addcontentsline{toc}{chapter}{\listtablename}  %将表格目录加入全文目录
+%\listofalgorithms
+%\addcontentsline{toc}{chapter}{\listalgorithmname} %将算法目录加入全文目录
 
-\include{tex/symbol} % 主要符号、缩略词对照表
+%\include{tex/symbol} % 主要符号、缩略词对照表
 
 \mainmatter	% 使用阿拉伯数字对正文编号
 
@@ -89,7 +92,7 @@
 \include{tex/chapter04}
 %\include{tex/example}
 %\include{tex/faq}
-%\include{tex/summary}
+\include{tex/summary}
 
 \appendix	% 使用英文字母对附录编号，重新定义附录中的公式、图图表编号样式
 \renewcommand\theequation{\Alph{chapter}--\arabic{equation}}	
